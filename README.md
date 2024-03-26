@@ -1,7 +1,3 @@
-# NUS-SWS3004-project
-Team members:
-
-`Yang Jiajian`,`Li Peiru`,`Xie Xinran`,`Yang Zhengmao`
 > This is a front-end of Ai Roam Assistant, having commercial level APIs. It has:
 > + JWT token login verify.
 > + Axios request and response interceptors.
