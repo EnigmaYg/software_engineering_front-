@@ -2,7 +2,7 @@ import axios from "axios";
 import {showMyLoader, unMountedLoader} from "@/hooks/myLoader";
 
 const request = axios.create({
-    baseURL: 'http://localhost:9091',
+    baseURL: './api',
     timeout: 100000, //100s
 })
 
