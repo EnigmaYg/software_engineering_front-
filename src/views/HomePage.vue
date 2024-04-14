@@ -113,7 +113,19 @@ export default {
             }
             return str;
           }]
-        }).then(resp => {
+          // data: {
+          //   departure: tourPlan.departure,
+          //   destination: tourPlan.destination,
+          //   start_time: tourPlan.start_time
+          // },
+          // transformRequest: [function (data) {
+          //   let str = '';
+          //   for (let key in data) {
+          //     str += encodeURIComponent(key) + '=' + encodeURIComponent(data[key]) + '&';
+          //   }
+          //   return str;
+          // }]
+        }).then(resp =>{
           console.log(resp.data.data)
           localStorage.setItem('departure',tourPlan.departure)
           localStorage.setItem('destination',tourPlan.destination)
