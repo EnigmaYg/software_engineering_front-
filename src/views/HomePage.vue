@@ -126,7 +126,7 @@ export default {
           //   return str;
           // }]
         }).then(resp =>{
-          console.log(resp.data.data)
+          console.log(resp.data)
           localStorage.setItem('departure',tourPlan.departure)
           localStorage.setItem('destination',tourPlan.destination)
           localStorage.setItem('startTime',tourPlan.start_time)
@@ -173,8 +173,8 @@ export default {
                   "        }\n" +
                   "    ],\n" +
                   "    \"Additional_Information\": {\n" +
-                  "        \"Emergency Number\": \"The emergency number in Singapore is 995. This number should be dialed in case of a medical emergency or when an ambulance is needed. When you call 995, you will be connected to the Singapore Civil Defence Force (SCDF) Emergency Medical Services, and they will dispatch an ambulance to your location.\",\n" +
-                  "        \"Police Number\": \"For other emergencies such as police assistance or fire-related emergencies, you can dial 999\",\n" +
+                  "        \"Emergency Number\": \"The emergency number in Singapore is " + resp.data.Additional_Information.Emergency_Number + ". This number should be dialed in case of a medical emergency or when an ambulance is needed. When you call 995, you will be connected to the Singapore Civil Defence Force (SCDF) Emergency Medical Services, and they will dispatch an ambulance to your location.\",\n" +
+                  "        \"Police Number\": \"For other emergencies such as police assistance or fire-related emergencies, you can dial " + resp.data.Additional_Information.Policy_Number + "\",\n" +
                   "        \"Weather Condition\": \"summer in Singapore is characterized by occasional rain showers and thunderstorms. These rain showers can be heavy and brief, providing temporary relief from the heat. It's advisable to carry an umbrella or raincoat when exploring the city during the summer season.\"\n" +
                   "    }\n" +
                   "}"
