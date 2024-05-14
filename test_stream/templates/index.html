@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat with AI</title>
+    <style>
+        #messages {
+            height: 300px; /* 固定高度 */
+            overflow-y: auto; /* 超出部分显示滚动条 */
+            border: 1px solid #ccc; /* 边框显示 */
+            padding: 10px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap; /* 允许自动换行并保留空格 */
+            word-wrap: break-word; /* 在长单词或URL地址内部进行换行 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with AI</h1>
+    <form id="chatForm">
+        <input type="text" id="user_input" placeholder="Say something..." required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="messages"></div>
+
+    <script>
+        document.getElementById('chatForm').onsubmit = function(event) {
+            event.preventDefault();
+            var userInput = document.getElementById('user_input').value;
+            var eventSource = new EventSource('/get_response?user_input=' + encodeURIComponent(userInput));
+            var isFirstMessage = true;
+            eventSource.onmessage = function(event) {
+                var messages = document.getElementById('messages');
+                if (!isFirstMessage) {
+                    messages.textContent += event.data;
+                } else {
+                    messages.textContent = event.data;
+                    isFirstMessage = false;
+                }
+                messages.scrollTop = messages.scrollHeight; // 滚动到最新消息
+            };
+            eventSource.onerror = function(event) {
+                eventSource.close();
+            };
+        };
+    </script>
+</body>
+</html>
